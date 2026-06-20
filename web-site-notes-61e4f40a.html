@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威廉希尔 · 信息索引与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce3b0 0%, #f8d48a 45%, #f3be67 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 4rem;
+            color: #2f2a1f;
+        }
+
+        .page-card {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 
+                0 12px 30px rgba(140, 80, 20, 0.15),
+                inset 0 1px 2px rgba(255, 255, 245, 0.7);
+            padding: 2.5rem 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 500px) {
+            body { padding: 1.2rem 1rem 3rem; }
+            .page-card { padding: 1.8rem 1.2rem; border-radius: 36px 18px 36px 18px; }
+        }
+
+        .hero-tagline {
+            font-size: 2.1rem;
+            font-weight: 360;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            color: #4d3c1c;
+            border-left: 5px solid #c5954c;
+            padding-left: 1.2rem;
+            margin-bottom: 1.8rem;
+            text-wrap: pretty;
+        }
+
+        .hero-tagline strong {
+            font-weight: 500;
+            color: #724f1d;
+        }
+
+        .intro-text {
+            font-size: 1.08rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: #3d351f;
+            background: rgba(245, 225, 175, 0.2);
+            padding: 1rem 1.2rem;
+            border-radius: 30px 12px 30px 12px;
+            text-wrap: pretty;
+        }
+
+        .intro-text a {
+            color: #7f5d28;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #dbb87a;
+            padding-bottom: 1px;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .intro-text a:hover {
+            color: #4f320d;
+            border-bottom-color: #b48237;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2rem 0 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .features-list li {
+            background: #fcf5e6;
+            border-radius: 60px 20px 60px 20px;
+            padding: 0.8rem 1.5rem 0.8rem 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            box-shadow: 0 2px 6px rgba(120, 70, 10, 0.08);
+            transition: background 0.15s, transform 0.1s;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .features-list li::before {
+            content: "·";
+            font-weight: 700;
+            color: #b48237;
+            font-size: 1.5rem;
+            margin-right: 0.3rem;
+            line-height: 1;
+        }
+
+        .features-list li:hover {
+            background: #f7edce;
+            transform: translateX(4px);
+        }
+
+        .scenario-block {
+            background: #fcf1da;
+            border-radius: 24px 40px 24px 40px;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem 1.5rem;
+            box-shadow: inset 0 1px 3px rgba(200, 150, 70, 0.18);
+        }
+
+        .scenario-block p {
+            flex: 1 1 200px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #3f351b;
+        }
+
+        .scenario-block .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.8rem;
+        }
+
+        .scenario-tag {
+            background: #f3e3c4;
+            padding: 0.35rem 1rem;
+            border-radius: 40px 12px 40px 12px;
+            font-size: 0.9rem;
+            font-weight: 420;
+            color: #5d451b;
+            letter-spacing: 0.3px;
+            box-shadow: 0 1px 4px rgba(110, 65, 10, 0.1);
+        }
+
+        .faq-note {
+            margin: 2rem 0 1.2rem;
+            background: #faf2e0;
+            border-radius: 30px 14px 30px 14px;
+            padding: 1.2rem 1.6rem;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: #3b3119;
+            border: 1px solid #eddaae;
+        }
+
+        .faq-note summary {
+            font-weight: 470;
+            color: #644917;
+            cursor: pointer;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-note summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-note summary::before {
+            content: "↪";
+            display: inline-block;
+            color: #b48237;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-note[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-note p {
+            margin-top: 0.8rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #dbb87a;
+            padding-left: 1rem;
+        }
+
+        .closing-line {
+            margin-top: 1.8rem;
+            text-align: right;
+            font-style: italic;
+            font-size: 1rem;
+            color: #584b26;
+            border-top: 1px solid #ebd5aa;
+            padding-top: 1.2rem;
+            letter-spacing: 0.2px;
+        }
+
+        .closing-line a {
+            color: #7f5d28;
+            text-decoration: none;
+            font-weight: 460;
+            border-bottom: 1px dotted #cbaa71;
+        }
+
+        .closing-line a:hover {
+            border-bottom-style: solid;
+            color: #3e2b0d;
+        }
+
+        .footnote-muted {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            text-align: center;
+            color: #5e4e26;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-card">
+
+    <div class="hero-tagline">
+        一份通常查询，<br>以及对比与延伸。
+    </div>
+
+    <div class="intro-text">
+        翻阅各类信息源时，<strong>威廉希尔</strong>这个名字时常出现在赛事动态与资料整理栏中。它并非一个需要特别“解读”的符号，更像是一处可供对照的索引坐标——当你希望从不同角度梳理线索、核对表述时，这个名字会自然浮现。以下内容不追求面面俱到，只从日常检索与信息延展的视角，提供几点切实的参照。
+    </div>
+
+    <ul class="features-list">
+        <li>在多个信息框架中，<strong>威廉希尔</strong>被用作背景参考项，帮助理清叙述层次与时间轴。</li>
+        <li>跨平台的摘要、百科条目以及专题讨论，常将其列为延伸阅读的起点之一。</li>
+        <li>部分分析文章在罗列关键名称时，会以“<a href="https://web-site-williamhill.com">威廉希尔</a>”作为对照锚点，方便读者自行比对。</li>
+        <li>对于需要横向对比不同来源的读者，这个名字提供了一种稳定的参照——不必深究，但值得留意。</li>
+        <li>围绕该名称整理的文档与速查笔记，往往带有温和的梳理语气，适合快速浏览与归档。</li>
+    </ul>
+
+    <div class="scenario-block">
+        <p>
+            例如在整理赛事回顾、信息简报或资料卡片时，<strong>威廉希尔</strong>常被归类于“可交叉核对的条目”之中，与时间戳、数据来源并列。
+        </p>
+        <div class="tag-group">
+            <span class="scenario-tag">📋 对照组</span>
+            <span class="scenario-tag">🔍 延伸索引</span>
+            <span class="scenario-tag">📎 备注栏</span>
+        </div>
+    </div>
+
+    <details class="faq-note">
+        <summary>关于「查询与参考」的一点说明</summary>
+        <p>
+            不少用户在搜索或做笔记时，会主动保留一个可回溯的入口。此处使用的 <a href="https://web-site-williamhill.com">威廉希尔</a> 就属于这类“温和的参照”——它不指向某个具体结论，而是提供一种连贯的查询习惯。你可以将其视为信息网格里一个不起眼但稳定的节点。
+        </p>
+    </details>
+
+    <div class="closing-line">
+        像翻阅一本旧册子，<br>某个名字静静待在索引里，<br>等你需要时自然会想起它。
+    </div>
+
+    <div class="footnote-muted">
+        · 信息整理 2025 ·
+    </div>
+
+</div>
+
+</body>
+</html>
